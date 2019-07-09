@@ -1,26 +1,68 @@
 import React from "react";
 import "./App.css";
+import Button from "./components/Button"
+import {Input} from "./components/Input"
+import {ClearButton} from "./components/ClearButton"
+import  * as math from 'mathjs';
 // STEP 4 - import the button and display components
 // Don't forget to import any extra css/scss files you build into the correct component
 
 // Logo has already been provided for you. Do the same for the remaining components
 import Logo from "./components/DisplayComponents/Logo";
 
-function App() {
-  // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
-  // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
-  // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
-  // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
-  // Don't forget to pass the functions (and any additional data needed) to the components as props
-
-  return (
-    <div className="container">
-      <Logo />
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      input: ''
+    }
+  }
+  addToInput = val => {
+    this.setState({input: this.state.input + val});
+  }
+  handleEqual = () => {
+    this.setState({input: math.evaluate(this.state.input)})
+  }
+  
+  render(){
+    return(
       <div className="App">
-        {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
+      <div className="calc-wrapper">
+        <Input input={this.state.input}></Input>
+        <div className = "SpecialRow">
+          <ClearButton handleClear = {() => this.setState({input:''})}>C</ClearButton>
+          <Button>x/-</Button>
+          <Button>%</Button>
+          <Button>/</Button>
+        </div>
+        <div className = "row">
+        <Button handleClick={this.addToInput}> 1</Button>
+        <Button handleClick={this.addToInput}>2</Button>
+        <Button handleClick={this.addToInput}>3</Button>
+        <Button handleClick={this.addToInput}>*</Button>
+        </div>
+        <div className = "row">
+        <Button handleClick={this.addToInput}>4</Button>
+        <Button handleClick={this.addToInput}>5</Button>
+        <Button handleClick={this.addToInput}>6</Button>
+        <Button handleClick={this.addToInput}>-</Button>
+        </div>
+        <div className = "row">
+        <Button handleClick={this.addToInput}>7</Button>
+        <Button handleClick={this.addToInput}>8</Button>
+        <Button handleClick={this.addToInput}> 9</Button>
+        <Button handleClick={this.addToInput}>+</Button>
+        </div>
+        <div className = "row">
+        <Button handleClick={this.addToInput}>0</Button>
+        <Button handleClick={this.addToInput}>.</Button>
+        
+        <Button handleClick={() => this.handleEqual()}>=</Button>
+        </div>
       </div>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
