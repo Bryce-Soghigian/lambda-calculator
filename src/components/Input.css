@@ -1,0 +1,17 @@
+.input{
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    background-color: black;
+    color:white;
+    flex:1;
+    border-radius:100%;
+    width:37%;
+}
+.operator {
+    background-color:#3D97C3;
+    color:white;
+    border-radius: 100%
+}

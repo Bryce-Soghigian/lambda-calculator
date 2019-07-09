@@ -4,13 +4,14 @@
     justify-content: center;
     align-items: center;
     font-size: 1.4em;
-    background-color: dodgerblue;
+    background-color: #0C5376;
     color:white;
     flex:1;
     border-radius:100%;
+    width:10%;
 }
 .operator {
-    background-color:cyan;
+    background-color:#3D97C3;
     color:white;
     border-radius: 100%
 }
