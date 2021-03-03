@@ -23,6 +23,10 @@ class App extends React.Component{
   handleEqual = () => {
     this.setState({input: math.evaluate(this.state.input)})
   }
+
+  test = () => {
+      console.log("test")
+  }
   
   render(){
     return(
